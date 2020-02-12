@@ -33,7 +33,7 @@ class Main(BasePage):
         return Contact(reuse=True)
 
     def goto_contact(self):
-        locator=(By.LINK_TEXT, '通讯录')
+        locator=(By.ID, 'menu_contacts')
         self.find(locator).click()
         return Contact(reuse=True)
 

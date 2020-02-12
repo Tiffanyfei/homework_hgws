@@ -21,8 +21,10 @@ class TestContact:
         测试编辑用户
         :return:
         """
-        self.main.goto_add_member()
-        self.contact.edit_member()
+        self.main.goto_contact()
+        self.contact.edit_member('edit','13300001111')
+        self.contact.edit_member_right()
+
 
 
 

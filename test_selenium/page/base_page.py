@@ -1,6 +1,7 @@
 from time import sleep
 
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webdriver import WebDriver
 
 
@@ -38,6 +39,14 @@ class BasePage:
             return self._driver.find_elements(*by)
         else:
             return self._driver.find_elements(by, locator)
+
+    def clear_input(self,locator=""):
+        input_box=self.find(locator)
+        try:
+            input_box.clear()
+        except Exception as e:
+            print('清空输入框失败')
+
 
     def close(self):
         sleep(20)
