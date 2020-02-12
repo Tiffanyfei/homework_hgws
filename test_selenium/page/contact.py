@@ -1,7 +1,6 @@
 from time import sleep
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -9,10 +8,14 @@ from test_selenium.page.base_page import BasePage
 
 
 class Contact(BasePage):
+
     _add_member_button=(By.CSS_SELECTOR, "xxxx")
+    _base_url = 'https://work.weixin.qq.com/wework_admin/frame#contacts'
+
 
     #添加成员
     def add_member(self, username,acctid,mobile):
+        self.find((By.LINK_TEXT,'添加成员')).click()
         name_locator=(By.NAME, 'username')
         acctid_locator=(By.NAME, 'acctid')
         mobile_locator=(By.NAME, 'mobile')
@@ -23,6 +26,7 @@ class Contact(BasePage):
         self.find(button).click()
 
     def add_member_right(self,data):
+        sleep(1)
         data_list=self.finds((By.CSS_SELECTOR, '.member_colRight_memberTable_td:nth-child(2)'))
         list=[]
         for x in data_list:
@@ -48,14 +52,11 @@ class Contact(BasePage):
         self.find(mobile_locator).send_keys(mobile)
         self.find(button).click()
 
-    def edit_member_right(self):
-        assert '保存成功' in self.find((By.ID,'js_tips')).text
-
-
-
-
-    def add_member_error(self, data):
-        return AddMemberPage()
+    def del_member(self):
+        locator=(By.XPATH,'//*[@id="member_list"]/tr[1]/td[1]/input')
+        self.find(locator).click()
+        self.find((By.LINK_TEXT,'删除')).click()
+        self.find((By.LINK_TEXT,'确认')).click()
 
 
     def search(self, name):
@@ -78,3 +79,11 @@ class Contact(BasePage):
 
     def add_department(self):
         pass
+
+    def get_js_right(self,message):
+        locator=(By.ID,'js_tips')
+        WebDriverWait(self._driver, 10).until(
+            expected_conditions.visibility_of_element_located(locator)
+        )
+        print(self.find(locator).text)
+        assert message in self.find(locator).text
