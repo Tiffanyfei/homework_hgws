@@ -26,10 +26,14 @@ class Main(BasePage):
     def get_message(self):
         return ["aaa", "bbbb"]
 
-    def add_member(self):
+    def goto_add_member(self):
         locator=(By.LINK_TEXT, '添加成员')
         self.find(locator).click()
-        self._driver.execute_script("arguments[0].click();", self.find(locator))
+        return Contact(reuse=True)
+
+    def goto_contact(self):
+        locator=(By.LINK_TEXT, '通讯录')
+        self.find(locator).click()
         return Contact(reuse=True)
 
     def send_message(self):

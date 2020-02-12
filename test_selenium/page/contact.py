@@ -5,21 +5,29 @@ from test_selenium.page.base_page import BasePage
 
 class Contact(BasePage):
     _add_member_button=(By.CSS_SELECTOR, "xxxx")
-    def add_member(self, data):
-        #self.driver.find_element("添加成员").click
-        #sendkeys
-        #click save
+
+    #添加成员
+    def add_member(self, username,acctid,mobile):
         name_locator=(By.NAME, 'username')
         acctid_locator=(By.NAME, 'acctid')
-        #$('.ww_radio[value="2"]')
-        gender_locator=(By.CSS_SELECTOR, '.ww_radio[value="2"]')
         mobile_locator=(By.NAME, 'mobile')
-        self.find(name_locator).send_keys("seveniruby")
-        self.find(acctid_locator).send_keys("seveniruby")
-        self.find(gender_locator).click()
-        self.find((By.CSS_SELECTOR, ".ww_telInput_zipCode_input")).click()
-        self.find((By.CSS_SELECTOR, 'li[data-value="853"]')).click()
-        self.find(mobile_locator).send_keys("15600534760")
+        button=(By.LINK_TEXT,'保存')
+        self.find(name_locator).send_keys(username)
+        self.find(acctid_locator).send_keys(acctid)
+        self.find(mobile_locator).send_keys(mobile)
+        self.find(button).click()
+
+    def add_member_right(self,data):
+        data_list=self.finds((By.CSS_SELECTOR, '.member_colRight_memberTable_td:nth-child(2)'))
+        list=[]
+        for x in data_list:
+            list.append(x.text)
+        assert data in list
+
+    def edit_member(self):
+        #todo:
+
+
 
     def add_member_error(self, data):
         return AddMemberPage()

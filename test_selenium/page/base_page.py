@@ -33,6 +33,12 @@ class BasePage:
         else:
             return self._driver.find_element(by, locator)
 
+    def finds(self,by, locator=""):
+        if isinstance(by, tuple):
+            return self._driver.find_elements(*by)
+        else:
+            return self._driver.find_elements(by, locator)
+
     def close(self):
         sleep(20)
         self._driver.quit()
