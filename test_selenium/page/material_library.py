@@ -3,10 +3,9 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 from test_selenium.page.base_page import BasePage
-from test_selenium.page.manage import Manage
 
 
-class ManageTools(BasePage):
+class MaterialLibrary(BasePage):
 
 
     def wait_click(self, element):

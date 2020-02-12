@@ -37,7 +37,8 @@ class Main(BasePage):
         self.find(locator).click()
         return Message(reuse=True)
 
-    def goto_manage(self):
+    #前往管理工具
+    def goto_manage_tools(self):
         locator=(By.ID,'menu_manageTools')
         self.find(locator).click()
         return Contact(reuse=True)
