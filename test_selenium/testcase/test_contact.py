@@ -16,5 +16,13 @@ class TestContact:
         self.contact.add_member("ccc55",'ccc55','13312341239')
         self.contact.add_member_right('ccc55')
 
+    def test_edit_user(self):
+        """
+        测试编辑用户
+        :return:
+        """
+        self.main.goto_add_member()
+        self.contact.edit_member()
+
 
 

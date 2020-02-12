@@ -6,6 +6,7 @@ from test_selenium.page.contact import Contact
 
 class Main(BasePage):
     _base_url="https://work.weixin.qq.com/wework_admin/frame#index"
+
     def download(self):
         pass
 

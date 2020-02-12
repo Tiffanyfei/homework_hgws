@@ -4,6 +4,7 @@ from test_selenium.page.base_page import BasePage
 
 
 class Contact(BasePage):
+    _base_url = "https://work.weixin.qq.com/wework_admin/frame#contacts"
     _add_member_button=(By.CSS_SELECTOR, "xxxx")
 
     #添加成员
@@ -25,7 +26,9 @@ class Contact(BasePage):
         assert data in list
 
     def edit_member(self):
-        #todo:
+        self.find((By.CSS_SELECTOR, '.member_colRight_memberTable_tr_Hover .ww_icon')).click()
+        self.find((By.LINK_TEXT,'编辑')).click()
+
 
 
 
