@@ -1,8 +1,7 @@
 from selenium.webdriver.common.by import By
 
-from page.base_page import BasePage
-from page.contact import Contact
-from page.message import Message
+from test_selenium.page.base_page import BasePage
+from test_selenium.page.contact import Contact
 
 
 class Main(BasePage):
@@ -13,7 +12,7 @@ class Main(BasePage):
     def import_user(self, path):
         self.find((By.PARTIAL_LINK_TEXT, "导入成员")).click()
         self.find((By.LINK_TEXT, "批量导入")).click()
-        self.find(By.ID, "js_upload_file_input").send_keys(path)
+        self.find((By.ID, "js_upload_file_input")).send_keys(path)
         self.find((By.ID, "submit_csv")).click()
         self.find((By.ID, "reloadContact")).click()
         return self
@@ -37,3 +36,8 @@ class Main(BasePage):
         locator = (By.LINK_TEXT, '消息群发')
         self.find(locator).click()
         return Message(reuse=True)
+
+    def goto_manage(self):
+        locator=(By.ID,'menu_manageTools')
+        self.find(locator).click()
+        return Contact(reuse=True)
