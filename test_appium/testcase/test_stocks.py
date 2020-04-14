@@ -1,5 +1,4 @@
 from test_appium.page.app import App
-from test_appium.page.base_page import BasePage
 
 
 
