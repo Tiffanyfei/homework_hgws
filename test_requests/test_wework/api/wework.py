@@ -8,10 +8,10 @@ from test_requests.test_wework.api.base_api import BaseApi
 
 class WeWork(BaseApi):
     token_url = "https://qyapi.weixin.qq.com/cgi-bin/gettoken"
-    corpid = 'ww1364d2647486bddc'
+    corpid = '****'
     token = dict()
     token_time = dict
-    secret = "fSCVWbqhl9GA9-pj23uLMGVBOcNmCdMk8p03AvIVozs"
+    secret = "****"
 
     @classmethod
     def get_token(cls, secret=secret):
